@@ -1,38 +1,50 @@
 {
   "name": "tachyons",
-  "version": "0.0.1",
-  "description": "Performance-first css framework built with sass.",
-  "main": "index.html",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mrmrs/tachyons.git"
-  },
+  "version": "4.7.1",
+  "description": "Functional CSS for humans",
+  "author": "mrmrs",
+  "style": "css/tachyons.min.css",
+  "main": "css/tachyons.css",
+  "files": [
+    "css",
+    "src"
+  ],
+  "repository": "tachyons-css/tachyons",
   "keywords": [
     "css",
-    "sass",
     "oocss",
+    "postcss",
+    "functional css",
+    "design",
+    "responsive",
     "performance"
   ],
-  "author": "mrmrs",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mrmrs/tachyons/issues"
-  },
   "devDependencies": {
-    "browser-sync": "^1.1.1",
-    "gulp": "^3.8.2",
-    "gulp-autoprefixer": "0.0.7",
-    "gulp-csslint": "^0.1.4",
-    "gulp-minify-css": "^0.3.5",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^0.7.2",
-    "gulp-size": "^0.4.0",
-    "gulp-stylestats": "^0.2.8",
-    "gulp-uncss": "^0.4.4",
-    "gulp-util": "^2.2.18",
-    "gulp-watch": "^0.6.8"
+    "copy-files": "^0.1.0",
+    "immutable-css-cli": "^1.1.1",
+    "normalize.css": "^6.0.0",
+    "tachyons-modules": "^1.1.8",
+    "tachyons-cli": "^1.0.10",
+    "watch": "^1.0.1"
   },
+  "contributors": [
+    {
+      "name": "adam morse",
+      "email": "hi@mrmrs.cc"
+    },
+    {
+      "name": "john otander",
+      "url": "http://johnotander.com"
+    }
+  ],
   "scripts": {
-    "start": "gulp"
+    "start": "npm run build:watch",
+    "mutations": "immutable-css src/tachyons.css --strict",
+    "build": "npm run build:css && npm run build:minify",
+    "build:css": "tachyons src/tachyons.css > css/tachyons.css",
+    "build:minify": "tachyons src/tachyons.css -m > css/tachyons.min.css",
+    "build:watch": "watch \"npm run build\" ./src/"
   }
 }
+
